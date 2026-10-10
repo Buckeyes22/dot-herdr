@@ -1,0 +1,1375 @@
+{
+  "classification": "implemented_catalog",
+  "protocol": "2026-07-28",
+  "store_schema": 2,
+  "events": [
+    {
+      "name": "herdr.attention.detected",
+      "description": "An enrolled parent is detected blocked; inspect context. This is not approval.",
+      "delivery": [
+        "webhook"
+      ],
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "subject_key": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          }
+        },
+        "required": [
+          "subject_key"
+        ],
+        "additionalProperties": false
+      },
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "schema_version": {
+            "const": 2
+          },
+          "subject_key": {
+            "type": "string"
+          },
+          "owner_key": {
+            "type": "string"
+          },
+          "generation": {
+            "type": "integer"
+          },
+          "revision": {
+            "type": "integer"
+          },
+          "origin": {
+            "type": "string"
+          },
+          "observed_at": {
+            "type": "string"
+          },
+          "occurred_at": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "time_basis": {
+            "const": "observation"
+          },
+          "upstream_history": {
+            "const": "best_effort"
+          },
+          "captured_history": {
+            "const": "durable_since_commit"
+          },
+          "goal_status": {
+            "const": "unknown"
+          },
+          "state": {
+            "type": "string"
+          },
+          "previous_state": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "category": {
+            "type": "string"
+          },
+          "decision_authority": {
+            "const": "unknown"
+          },
+          "detail_available": {
+            "type": "boolean"
+          },
+          "completion_seq": {
+            "type": "integer"
+          },
+          "completion_kind": {
+            "const": "turn_completed"
+          },
+          "coverage_state": {
+            "type": "string"
+          },
+          "reason_code": {
+            "type": "string"
+          },
+          "history_complete": {
+            "const": false
+          }
+        },
+        "required": [
+          "schema_version",
+          "subject_key",
+          "owner_key",
+          "generation",
+          "revision",
+          "origin",
+          "observed_at",
+          "occurred_at",
+          "time_basis",
+          "upstream_history",
+          "captured_history",
+          "goal_status"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "herdr.turn.completed",
+      "description": "Observed completion counter advanced; turn completion is not task success.",
+      "delivery": [
+        "webhook"
+      ],
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "subject_key": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          }
+        },
+        "required": [
+          "subject_key"
+        ],
+        "additionalProperties": false
+      },
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "schema_version": {
+            "const": 2
+          },
+          "subject_key": {
+            "type": "string"
+          },
+          "owner_key": {
+            "type": "string"
+          },
+          "generation": {
+            "type": "integer"
+          },
+          "revision": {
+            "type": "integer"
+          },
+          "origin": {
+            "type": "string"
+          },
+          "observed_at": {
+            "type": "string"
+          },
+          "occurred_at": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "time_basis": {
+            "const": "observation"
+          },
+          "upstream_history": {
+            "const": "best_effort"
+          },
+          "captured_history": {
+            "const": "durable_since_commit"
+          },
+          "goal_status": {
+            "const": "unknown"
+          },
+          "state": {
+            "type": "string"
+          },
+          "previous_state": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "category": {
+            "type": "string"
+          },
+          "decision_authority": {
+            "const": "unknown"
+          },
+          "detail_available": {
+            "type": "boolean"
+          },
+          "completion_seq": {
+            "type": "integer"
+          },
+          "completion_kind": {
+            "const": "turn_completed"
+          },
+          "coverage_state": {
+            "type": "string"
+          },
+          "reason_code": {
+            "type": "string"
+          },
+          "history_complete": {
+            "const": false
+          }
+        },
+        "required": [
+          "schema_version",
+          "subject_key",
+          "owner_key",
+          "generation",
+          "revision",
+          "origin",
+          "observed_at",
+          "occurred_at",
+          "time_basis",
+          "upstream_history",
+          "captured_history",
+          "goal_status"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "herdr.lifecycle.changed",
+      "description": "Observed parent state changed; inspect cached/current source details.",
+      "delivery": [
+        "webhook"
+      ],
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "subject_key": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          }
+        },
+        "required": [
+          "subject_key"
+        ],
+        "additionalProperties": false
+      },
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "schema_version": {
+            "const": 2
+          },
+          "subject_key": {
+            "type": "string"
+          },
+          "owner_key": {
+            "type": "string"
+          },
+          "generation": {
+            "type": "integer"
+          },
+          "revision": {
+            "type": "integer"
+          },
+          "origin": {
+            "type": "string"
+          },
+          "observed_at": {
+            "type": "string"
+          },
+          "occurred_at": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "time_basis": {
+            "const": "observation"
+          },
+          "upstream_history": {
+            "const": "best_effort"
+          },
+          "captured_history": {
+            "const": "durable_since_commit"
+          },
+          "goal_status": {
+            "const": "unknown"
+          },
+          "state": {
+            "type": "string"
+          },
+          "previous_state": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "category": {
+            "type": "string"
+          },
+          "decision_authority": {
+            "const": "unknown"
+          },
+          "detail_available": {
+            "type": "boolean"
+          },
+          "completion_seq": {
+            "type": "integer"
+          },
+          "completion_kind": {
+            "const": "turn_completed"
+          },
+          "coverage_state": {
+            "type": "string"
+          },
+          "reason_code": {
+            "type": "string"
+          },
+          "history_complete": {
+            "const": false
+          }
+        },
+        "required": [
+          "schema_version",
+          "subject_key",
+          "owner_key",
+          "generation",
+          "revision",
+          "origin",
+          "observed_at",
+          "occurred_at",
+          "time_basis",
+          "upstream_history",
+          "captured_history",
+          "goal_status"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "herdr.coverage.changed",
+      "description": "Known source observation gap; upstream missed episodes cannot be recovered.",
+      "delivery": [
+        "webhook"
+      ],
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "subject_key": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          }
+        },
+        "required": [
+          "subject_key"
+        ],
+        "additionalProperties": false
+      },
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "schema_version": {
+            "const": 2
+          },
+          "subject_key": {
+            "type": "string"
+          },
+          "owner_key": {
+            "type": "string"
+          },
+          "generation": {
+            "type": "integer"
+          },
+          "revision": {
+            "type": "integer"
+          },
+          "origin": {
+            "type": "string"
+          },
+          "observed_at": {
+            "type": "string"
+          },
+          "occurred_at": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "time_basis": {
+            "const": "observation"
+          },
+          "upstream_history": {
+            "const": "best_effort"
+          },
+          "captured_history": {
+            "const": "durable_since_commit"
+          },
+          "goal_status": {
+            "const": "unknown"
+          },
+          "state": {
+            "type": "string"
+          },
+          "previous_state": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "category": {
+            "type": "string"
+          },
+          "decision_authority": {
+            "const": "unknown"
+          },
+          "detail_available": {
+            "type": "boolean"
+          },
+          "completion_seq": {
+            "type": "integer"
+          },
+          "completion_kind": {
+            "const": "turn_completed"
+          },
+          "coverage_state": {
+            "type": "string"
+          },
+          "reason_code": {
+            "type": "string"
+          },
+          "history_complete": {
+            "const": false
+          }
+        },
+        "required": [
+          "schema_version",
+          "subject_key",
+          "owner_key",
+          "generation",
+          "revision",
+          "origin",
+          "observed_at",
+          "occurred_at",
+          "time_basis",
+          "upstream_history",
+          "captured_history",
+          "goal_status"
+        ],
+        "additionalProperties": false
+      }
+    }
+  ],
+  "tools": [
+    {
+      "name": "get_profile",
+      "title": null,
+      "description": "Stable opaque identity represented by the validated request credentials.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {},
+        "title": "get_profileArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "outputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "title": "Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "title": "Profile",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": {
+        "title": null,
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": null,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "openai/profile": true
+      }
+    },
+    {
+      "name": "send_agent_message",
+      "title": null,
+      "description": "Submit a prompt to an enrolled agent. Requires control grant and herdr:control. Reuse request_id only for the same action; unknown delivery must be inspected, never blindly resubmitted.",
+      "inputSchema": {
+        "properties": {
+          "subject_key": {
+            "title": "Subject Key",
+            "type": "string"
+          },
+          "expected_generation": {
+            "title": "Expected Generation",
+            "type": "integer"
+          },
+          "request_id": {
+            "title": "Request Id",
+            "type": "string"
+          },
+          "text": {
+            "title": "Text",
+            "type": "string"
+          }
+        },
+        "required": [
+          "subject_key",
+          "expected_generation",
+          "request_id",
+          "text"
+        ],
+        "title": "send_agent_messageArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "send_agent_messageDictOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": {
+        "title": null,
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "_meta": null
+    },
+    {
+      "name": "send_agent_keys",
+      "title": null,
+      "description": "Send logical UI keys (enter, esc, ctrl+c, y) to an enrolled agent, including blocked dialogs. Inspect UI first and follow user's decision authority. Not a typed approval API.",
+      "inputSchema": {
+        "properties": {
+          "subject_key": {
+            "title": "Subject Key",
+            "type": "string"
+          },
+          "expected_generation": {
+            "title": "Expected Generation",
+            "type": "integer"
+          },
+          "request_id": {
+            "title": "Request Id",
+            "type": "string"
+          },
+          "keys": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Keys",
+            "type": "array"
+          }
+        },
+        "required": [
+          "subject_key",
+          "expected_generation",
+          "request_id",
+          "keys"
+        ],
+        "title": "send_agent_keysArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "send_agent_keysDictOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": {
+        "title": null,
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "_meta": null
+    },
+    {
+      "name": "send_agent_input",
+      "title": null,
+      "description": "Type a text reply and optional logical keys into the enrolled agent UI, including blocked questions. Pass keys=['enter'] to submit. Inspect current UI and follow user's authority; this can answer approvals and is not a typed approval protocol.",
+      "inputSchema": {
+        "properties": {
+          "subject_key": {
+            "title": "Subject Key",
+            "type": "string"
+          },
+          "expected_generation": {
+            "title": "Expected Generation",
+            "type": "integer"
+          },
+          "request_id": {
+            "title": "Request Id",
+            "type": "string"
+          },
+          "text": {
+            "title": "Text",
+            "type": "string"
+          },
+          "keys": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Keys"
+          }
+        },
+        "required": [
+          "subject_key",
+          "expected_generation",
+          "request_id",
+          "text"
+        ],
+        "title": "send_agent_inputArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "send_agent_inputDictOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": {
+        "title": null,
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "_meta": null
+    },
+    {
+      "name": "rename_agent",
+      "title": null,
+      "description": "Set or clear enrolled agent's display name. Does not change enrollment identity.",
+      "inputSchema": {
+        "properties": {
+          "subject_key": {
+            "title": "Subject Key",
+            "type": "string"
+          },
+          "expected_generation": {
+            "title": "Expected Generation",
+            "type": "integer"
+          },
+          "request_id": {
+            "title": "Request Id",
+            "type": "string"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Name"
+          }
+        },
+        "required": [
+          "subject_key",
+          "expected_generation",
+          "request_id"
+        ],
+        "title": "rename_agentArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "rename_agentDictOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": {
+        "title": null,
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "_meta": null
+    },
+    {
+      "name": "focus_agent",
+      "title": null,
+      "description": "Bring enrolled agent into Herdr UI focus when requested.",
+      "inputSchema": {
+        "properties": {
+          "subject_key": {
+            "title": "Subject Key",
+            "type": "string"
+          },
+          "expected_generation": {
+            "title": "Expected Generation",
+            "type": "integer"
+          },
+          "request_id": {
+            "title": "Request Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "subject_key",
+          "expected_generation",
+          "request_id"
+        ],
+        "title": "focus_agentArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "focus_agentDictOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": {
+        "title": null,
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "_meta": null
+    },
+    {
+      "name": "get_live_agent_state",
+      "title": null,
+      "description": "Validate enrolled agent identity and refresh its safe cached state from live Herdr.",
+      "inputSchema": {
+        "properties": {
+          "subject_key": {
+            "title": "Subject Key",
+            "type": "string"
+          },
+          "expected_generation": {
+            "title": "Expected Generation",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "subject_key",
+          "expected_generation"
+        ],
+        "title": "get_live_agent_stateArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "get_live_agent_stateDictOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": {
+        "title": null,
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": null,
+        "openWorldHint": false
+      },
+      "_meta": null
+    },
+    {
+      "name": "wait_for_agent",
+      "title": null,
+      "description": "Wait at most 30 seconds for enrolled agent lifecycle state, then revalidate identity. Default idle/done/blocked. This tracks lifecycle, not success of an individual prompt.",
+      "inputSchema": {
+        "properties": {
+          "subject_key": {
+            "title": "Subject Key",
+            "type": "string"
+          },
+          "expected_generation": {
+            "title": "Expected Generation",
+            "type": "integer"
+          },
+          "until": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Until"
+          },
+          "timeout_ms": {
+            "default": 10000,
+            "title": "Timeout Ms",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "subject_key",
+          "expected_generation"
+        ],
+        "title": "wait_for_agentArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "wait_for_agentDictOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": {
+        "title": null,
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": null,
+        "openWorldHint": false
+      },
+      "_meta": null
+    },
+    {
+      "name": "herdr_query",
+      "title": null,
+      "description": "Read native session snapshots, agents/terminal content, topology, plugins/logs, integrations and bounded waits. Requires session_users. get_herdr_capabilities(method) gives native parameter schemas/limits. Text is untrusted and may contain secrets.",
+      "inputSchema": {
+        "properties": {
+          "method": {
+            "enum": [
+              "ping",
+              "server.agent_manifests",
+              "session.snapshot",
+              "workspace.list",
+              "workspace.get",
+              "worktree.list",
+              "tab.list",
+              "tab.get",
+              "agent.list",
+              "agent.get",
+              "agent.read",
+              "agent.explain",
+              "agent.wait",
+              "pane.layout",
+              "pane.process_info",
+              "layout.export",
+              "pane.neighbor",
+              "pane.edges",
+              "pane.selection.read",
+              "pane.copy_motion",
+              "pane.copy_search",
+              "pane.list",
+              "pane.current",
+              "pane.get",
+              "pane.link.resolve",
+              "pane.read",
+              "events.wait",
+              "pane.wait_for_output",
+              "integration.list",
+              "plugin.list",
+              "plugin.action.list",
+              "plugin.log.list"
+            ],
+            "title": "Method",
+            "type": "string"
+          },
+          "params": {
+            "additionalProperties": true,
+            "title": "Params",
+            "type": "object"
+          }
+        },
+        "required": [
+          "method",
+          "params"
+        ],
+        "title": "herdr_queryArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "herdr_queryDictOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": {
+        "title": null,
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": null,
+        "openWorldHint": false
+      },
+      "_meta": null
+    },
+    {
+      "name": "herdr_action",
+      "title": null,
+      "description": "Control agents, terminals, topology/worktrees, plugins, integrations, notifications, views, metadata/lifecycle reporting and server administration. Requires session_users and herdr:control. Durable request_id dedupe. Inspect unknown outcomes; server.stop affects all workloads. get_herdr_capabilities(method) gives schemas/limits.",
+      "inputSchema": {
+        "properties": {
+          "method": {
+            "enum": [
+              "server.stop",
+              "server.live_handoff",
+              "server.reload_config",
+              "server.reload_agent_manifests",
+              "notification.show",
+              "product_announcement.dismiss",
+              "release_notes.dismiss",
+              "command.invoke",
+              "workspace.create",
+              "workspace.focus",
+              "workspace.rename",
+              "workspace.move",
+              "workspace.move_block",
+              "workspace.report_metadata",
+              "workspace.close",
+              "worktree.create",
+              "worktree.open",
+              "worktree.remove",
+              "tab.create",
+              "tab.focus",
+              "tab.rename",
+              "tab.move",
+              "tab.close",
+              "agent.send_keys",
+              "agent.rename",
+              "agent.view.set",
+              "agent.view.clear",
+              "agent.focus",
+              "agent.start",
+              "agent.prompt",
+              "pane.split",
+              "pane.swap",
+              "pane.move",
+              "pane.zoom",
+              "layout.apply",
+              "layout.set_split_ratio",
+              "pane.focus_direction",
+              "pane.resize",
+              "pane.scroll",
+              "pane.clear",
+              "pane.edit_scrollback",
+              "pane.focus",
+              "pane.input.set",
+              "pane.link.activate",
+              "pane.rename",
+              "pane.send_text",
+              "pane.send_keys",
+              "pane.send_input",
+              "pane.report_agent",
+              "pane.report_agent_session",
+              "pane.report_metadata",
+              "pane.clear_agent_authority",
+              "pane.release_agent",
+              "pane.close",
+              "popup.close",
+              "integration.install",
+              "integration.uninstall",
+              "plugin.link",
+              "plugin.unlink",
+              "plugin.enable",
+              "plugin.disable",
+              "plugin.action.invoke",
+              "plugin.pane.open",
+              "plugin.pane.focus",
+              "plugin.pane.close"
+            ],
+            "title": "Method",
+            "type": "string"
+          },
+          "params": {
+            "additionalProperties": true,
+            "title": "Params",
+            "type": "object"
+          },
+          "request_id": {
+            "title": "Request Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "method",
+          "params",
+          "request_id"
+        ],
+        "title": "herdr_actionArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "herdr_actionDictOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": {
+        "title": null,
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "_meta": null
+    },
+    {
+      "name": "collect_native_events",
+      "title": null,
+      "description": "Collect a finite native events.subscribe sample (max30s/100events/128KiB), then close its source socket. Requires session_users. Native history is best effort; loss/disconnect is reported. This does not create a persistent ChatGPT event watch. Content may contain secrets.",
+      "inputSchema": {
+        "properties": {
+          "subscriptions": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "title": "Subscriptions",
+            "type": "array"
+          },
+          "timeout_ms": {
+            "default": 10000,
+            "title": "Timeout Ms",
+            "type": "integer"
+          },
+          "limit": {
+            "default": 25,
+            "title": "Limit",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "subscriptions"
+        ],
+        "title": "collect_native_eventsArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "collect_native_eventsDictOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": {
+        "title": null,
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": null,
+        "openWorldHint": false
+      },
+      "_meta": null
+    },
+    {
+      "name": "get_herdr_capabilities",
+      "title": null,
+      "description": "Your grants and native coverage. Supply method for its callable tool route, required permissions, full native parameter JSON Schema, connector target/input limits and unsupported reason. Native schema and connector constraints both apply. No ownership inference from titles/focus.",
+      "inputSchema": {
+        "properties": {
+          "method": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Method"
+          }
+        },
+        "title": "get_herdr_capabilitiesArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "get_herdr_capabilitiesDictOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": {
+        "title": null,
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": null,
+        "openWorldHint": false
+      },
+      "_meta": null
+    },
+    {
+      "name": "get_agent_state",
+      "title": null,
+      "description": "Cached scoped source state with observation time. Not current live validation or task success.",
+      "inputSchema": {
+        "properties": {
+          "subject_key": {
+            "title": "Subject Key",
+            "type": "string"
+          }
+        },
+        "required": [
+          "subject_key"
+        ],
+        "title": "get_agent_stateArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "get_agent_stateDictOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": {
+        "title": null,
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": null,
+        "openWorldHint": false
+      },
+      "_meta": null
+    },
+    {
+      "name": "list_timeline",
+      "title": null,
+      "description": "Captured journal only. Position is an application offset, not upstream/native replay.",
+      "inputSchema": {
+        "properties": {
+          "subject_key": {
+            "title": "Subject Key",
+            "type": "string"
+          },
+          "after_position": {
+            "default": 0,
+            "title": "After Position",
+            "type": "integer"
+          },
+          "limit": {
+            "default": 25,
+            "title": "Limit",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "subject_key"
+        ],
+        "title": "list_timelineArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "list_timelineDictOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": {
+        "title": null,
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": null,
+        "openWorldHint": false
+      },
+      "_meta": null
+    },
+    {
+      "name": "get_event",
+      "title": null,
+      "description": "Read one immutable entitled observation.",
+      "inputSchema": {
+        "properties": {
+          "event_id": {
+            "title": "Event Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "event_id"
+        ],
+        "title": "get_eventArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "get_eventDictOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": {
+        "title": null,
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": null,
+        "openWorldHint": false
+      },
+      "_meta": null
+    },
+    {
+      "name": "get_observation_capabilities",
+      "title": null,
+      "description": "Actual supported slice and explicit gaps; no native approval or task outcomes.",
+      "inputSchema": {
+        "properties": {},
+        "title": "get_observation_capabilitiesArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "get_observation_capabilitiesDictOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": {
+        "title": null,
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": null,
+        "openWorldHint": false
+      },
+      "_meta": null
+    },
+    {
+      "name": "get_connector_health",
+      "title": null,
+      "description": "Scoped source timestamps/gaps and delivery stages, no callback secrets.",
+      "inputSchema": {
+        "properties": {},
+        "title": "get_connector_healthArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "get_connector_healthDictOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": {
+        "title": null,
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": null,
+        "openWorldHint": false
+      },
+      "_meta": null
+    },
+    {
+      "name": "read_visible_context",
+      "title": null,
+      "description": "Transient bounded visible read under explicit content grant; may withhold secret-bearing text.",
+      "inputSchema": {
+        "properties": {
+          "subject_key": {
+            "title": "Subject Key",
+            "type": "string"
+          },
+          "expected_generation": {
+            "title": "Expected Generation",
+            "type": "integer"
+          },
+          "lines": {
+            "default": 40,
+            "title": "Lines",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "subject_key",
+          "expected_generation"
+        ],
+        "title": "read_visible_contextArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "read_visible_contextDictOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": {
+        "title": null,
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": null,
+        "openWorldHint": false
+      },
+      "_meta": null
+    },
+    {
+      "name": "record_triage_receipt",
+      "title": null,
+      "description": "Idempotent observer receipt, never source ACK/approval. Not independent chat attestation.",
+      "inputSchema": {
+        "properties": {
+          "event_id": {
+            "title": "Event Id",
+            "type": "string"
+          },
+          "subscription_key": {
+            "title": "Subscription Key",
+            "type": "string"
+          },
+          "phase": {
+            "title": "Phase",
+            "type": "string"
+          },
+          "disposition": {
+            "title": "Disposition",
+            "type": "string"
+          }
+        },
+        "required": [
+          "event_id",
+          "subscription_key",
+          "phase",
+          "disposition"
+        ],
+        "title": "record_triage_receiptArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "record_triage_receiptDictOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": {
+        "title": null,
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": null,
+        "openWorldHint": false
+      },
+      "_meta": null
+    }
+  ]
+}

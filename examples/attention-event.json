@@ -1,0 +1,24 @@
+{
+  "cursor": null,
+  "data": {
+    "captured_history": "durable_since_commit",
+    "category": "detected_blocked",
+    "decision_authority": "unknown",
+    "detail_available": false,
+    "generation": 1,
+    "goal_status": "unknown",
+    "observed_at": "2033-05-18T03:33:20Z",
+    "occurred_at": null,
+    "origin": "transition_observed",
+    "owner_key": "demo-owner",
+    "revision": 1,
+    "schema_version": 2,
+    "state": "blocked",
+    "subject_key": "demo-parent",
+    "time_basis": "observation",
+    "upstream_history": "best_effort"
+  },
+  "eventId": "evt_a0e10657ce3e22a3ee621f7070994399",
+  "name": "herdr.attention.detected",
+  "timestamp": "2033-05-18T03:33:20Z"
+}

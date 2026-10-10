@@ -1,0 +1,1074 @@
+{
+  "ping": {
+    "access": "query",
+    "fields": [],
+    "required": []
+  },
+  "server.stop": {
+    "access": "action",
+    "fields": [],
+    "required": [],
+    "notes": "Stops the entire configured Herdr server and its workloads. Use only when the user requested that effect; transport loss can leave the result unknown."
+  },
+  "server.live_handoff": {
+    "access": "action",
+    "fields": [
+      "expected_protocol",
+      "expected_version",
+      "import_exe"
+    ],
+    "required": [],
+    "notes": "Requires a compatible installed executable/version and native platform support. Check ping and expected_version/expected_protocol; importing an executable is not installation or download."
+  },
+  "server.reload_config": {
+    "access": "action",
+    "fields": [],
+    "required": [],
+    "notes": "Reloads Herdr configuration, not connector grants. Connector configuration still needs a restart."
+  },
+  "server.ssh_agent.register": {
+    "access": "unsupported",
+    "fields": [
+      "socket_path"
+    ],
+    "required": [
+      "socket_path"
+    ],
+    "reason": "Its lease lasts only while its dedicated socket connection remains open; one-shot forwarding would immediately revoke it. Persistent SSH credential forwarding is outside this local connector transport."
+  },
+  "server.agent_manifests": {
+    "access": "query",
+    "fields": [],
+    "required": []
+  },
+  "server.reload_agent_manifests": {
+    "access": "action",
+    "fields": [],
+    "required": []
+  },
+  "notification.show": {
+    "access": "action",
+    "fields": [
+      "body",
+      "position",
+      "sound",
+      "title"
+    ],
+    "required": [
+      "title"
+    ]
+  },
+  "product_announcement.dismiss": {
+    "access": "action",
+    "fields": [
+      "id",
+      "version"
+    ],
+    "required": [
+      "version",
+      "id"
+    ]
+  },
+  "release_notes.dismiss": {
+    "access": "action",
+    "fields": [
+      "version"
+    ],
+    "required": [
+      "version"
+    ]
+  },
+  "command.invoke": {
+    "access": "action",
+    "fields": [
+      "command_id",
+      "pane_id",
+      "selection",
+      "tab_id",
+      "workspace_id"
+    ],
+    "required": [
+      "command_id"
+    ],
+    "notes": "Requires an actual opaque command_id from the native client-shell command manifest and an explicit pane/tab/workspace target. Ordinary session.snapshot does not provide command IDs. Never invent IDs or use shell text as command_id."
+  },
+  "client.window_title.set": {
+    "access": "unsupported",
+    "fields": [
+      "title"
+    ],
+    "required": [
+      "title"
+    ],
+    "reason": "The JSON socket handler returns changed=false/no_foreground_client. Effective window-title control requires the foreground client endpoint."
+  },
+  "client.window_title.clear": {
+    "access": "unsupported",
+    "fields": [],
+    "required": [],
+    "reason": "The JSON socket handler returns changed=false/no_foreground_client. Effective window-title control requires the foreground client endpoint."
+  },
+  "client_shell.surface.set": {
+    "access": "unsupported",
+    "fields": [
+      "active"
+    ],
+    "required": [
+      "active"
+    ],
+    "reason": "Herdr rejects this on its JSON API socket with connection_local_only; it requires a client-shell endpoint."
+  },
+  "session.snapshot": {
+    "access": "query",
+    "fields": [],
+    "required": []
+  },
+  "workspace.create": {
+    "access": "action",
+    "fields": [
+      "cwd",
+      "env",
+      "focus",
+      "label",
+      "source_workspace_id"
+    ],
+    "required": []
+  },
+  "workspace.list": {
+    "access": "query",
+    "fields": [],
+    "required": []
+  },
+  "workspace.get": {
+    "access": "query",
+    "fields": [
+      "workspace_id"
+    ],
+    "required": [
+      "workspace_id"
+    ]
+  },
+  "workspace.focus": {
+    "access": "action",
+    "fields": [
+      "workspace_id"
+    ],
+    "required": [
+      "workspace_id"
+    ]
+  },
+  "workspace.rename": {
+    "access": "action",
+    "fields": [
+      "label",
+      "workspace_id"
+    ],
+    "required": [
+      "workspace_id",
+      "label"
+    ]
+  },
+  "workspace.move": {
+    "access": "action",
+    "fields": [
+      "insert_index",
+      "workspace_id"
+    ],
+    "required": [
+      "workspace_id",
+      "insert_index"
+    ]
+  },
+  "workspace.move_block": {
+    "access": "action",
+    "fields": [
+      "before_workspace_id",
+      "workspace_ids"
+    ],
+    "required": [
+      "workspace_ids"
+    ]
+  },
+  "workspace.report_metadata": {
+    "access": "action",
+    "fields": [
+      "seq",
+      "source",
+      "tokens",
+      "ttl_ms",
+      "workspace_id"
+    ],
+    "required": [
+      "workspace_id",
+      "source",
+      "tokens"
+    ],
+    "notes": "Source-scoped token metadata, optional seq and ttl_ms; no automatic ownership inference."
+  },
+  "workspace.close": {
+    "access": "action",
+    "fields": [
+      "close_group",
+      "workspace_id"
+    ],
+    "required": [
+      "workspace_id"
+    ]
+  },
+  "worktree.list": {
+    "access": "query",
+    "fields": [
+      "cwd",
+      "trust_repository",
+      "workspace_id"
+    ],
+    "required": []
+  },
+  "worktree.create": {
+    "access": "action",
+    "fields": [
+      "base",
+      "branch",
+      "cwd",
+      "focus",
+      "label",
+      "path",
+      "trust_repository",
+      "workspace_id"
+    ],
+    "required": []
+  },
+  "worktree.open": {
+    "access": "action",
+    "fields": [
+      "branch",
+      "cwd",
+      "focus",
+      "label",
+      "path",
+      "trust_repository",
+      "workspace_id"
+    ],
+    "required": []
+  },
+  "worktree.remove": {
+    "access": "action",
+    "fields": [
+      "force",
+      "trust_repository",
+      "workspace_id"
+    ],
+    "required": [
+      "workspace_id"
+    ]
+  },
+  "tab.create": {
+    "access": "action",
+    "fields": [
+      "cwd",
+      "env",
+      "focus",
+      "label",
+      "workspace_id"
+    ],
+    "required": []
+  },
+  "tab.list": {
+    "access": "query",
+    "fields": [
+      "workspace_id"
+    ],
+    "required": []
+  },
+  "tab.get": {
+    "access": "query",
+    "fields": [
+      "tab_id"
+    ],
+    "required": [
+      "tab_id"
+    ]
+  },
+  "tab.focus": {
+    "access": "action",
+    "fields": [
+      "tab_id"
+    ],
+    "required": [
+      "tab_id"
+    ]
+  },
+  "tab.rename": {
+    "access": "action",
+    "fields": [
+      "label",
+      "tab_id"
+    ],
+    "required": [
+      "tab_id",
+      "label"
+    ]
+  },
+  "tab.move": {
+    "access": "action",
+    "fields": [
+      "insert_index",
+      "tab_id"
+    ],
+    "required": [
+      "tab_id",
+      "insert_index"
+    ]
+  },
+  "tab.close": {
+    "access": "action",
+    "fields": [
+      "tab_id"
+    ],
+    "required": [
+      "tab_id"
+    ]
+  },
+  "agent.list": {
+    "access": "query",
+    "fields": [],
+    "required": []
+  },
+  "agent.get": {
+    "access": "query",
+    "fields": [
+      "target"
+    ],
+    "required": [
+      "target"
+    ]
+  },
+  "agent.read": {
+    "access": "query",
+    "fields": [
+      "format",
+      "lines",
+      "source",
+      "strip_ansi",
+      "target"
+    ],
+    "required": [
+      "target",
+      "source"
+    ]
+  },
+  "agent.explain": {
+    "access": "query",
+    "fields": [
+      "target"
+    ],
+    "required": [
+      "target"
+    ]
+  },
+  "agent.send_keys": {
+    "access": "action",
+    "fields": [
+      "keys",
+      "target"
+    ],
+    "required": [
+      "target",
+      "keys"
+    ]
+  },
+  "agent.rename": {
+    "access": "action",
+    "fields": [
+      "name",
+      "target"
+    ],
+    "required": [
+      "target"
+    ]
+  },
+  "agent.view.set": {
+    "access": "action",
+    "fields": [
+      "filter",
+      "label",
+      "sort",
+      "source"
+    ],
+    "required": [
+      "source"
+    ],
+    "notes": "Session-level agent panel filtering/sorting; no agent target field. Use a source label for the view."
+  },
+  "agent.view.clear": {
+    "access": "action",
+    "fields": [
+      "source"
+    ],
+    "required": [],
+    "notes": "Clears a native agent view, optionally identified by source."
+  },
+  "agent.focus": {
+    "access": "action",
+    "fields": [
+      "target"
+    ],
+    "required": [
+      "target"
+    ]
+  },
+  "agent.start": {
+    "access": "action",
+    "fields": [
+      "args",
+      "kind",
+      "name",
+      "pane_id",
+      "timeout_ms"
+    ],
+    "required": [
+      "name",
+      "kind",
+      "pane_id"
+    ]
+  },
+  "agent.prompt": {
+    "access": "action",
+    "fields": [
+      "target",
+      "text",
+      "wait"
+    ],
+    "required": [
+      "target",
+      "text"
+    ]
+  },
+  "agent.wait": {
+    "access": "query",
+    "fields": [
+      "target",
+      "timeout_ms",
+      "until"
+    ],
+    "required": [
+      "target"
+    ]
+  },
+  "pane.split": {
+    "access": "action",
+    "fields": [
+      "cwd",
+      "direction",
+      "env",
+      "focus",
+      "ratio",
+      "right_click",
+      "target_pane_id",
+      "workspace_id"
+    ],
+    "required": [
+      "direction"
+    ]
+  },
+  "pane.swap": {
+    "access": "action",
+    "fields": [
+      "direction",
+      "pane_id",
+      "source_pane_id",
+      "target_pane_id"
+    ],
+    "required": []
+  },
+  "pane.move": {
+    "access": "action",
+    "fields": [
+      "destination",
+      "focus",
+      "pane_id"
+    ],
+    "required": [
+      "pane_id",
+      "destination"
+    ]
+  },
+  "pane.zoom": {
+    "access": "action",
+    "fields": [
+      "mode",
+      "pane_id"
+    ],
+    "required": []
+  },
+  "pane.layout": {
+    "access": "query",
+    "fields": [
+      "pane_id"
+    ],
+    "required": []
+  },
+  "pane.process_info": {
+    "access": "query",
+    "fields": [
+      "pane_id"
+    ],
+    "required": []
+  },
+  "layout.export": {
+    "access": "query",
+    "fields": [
+      "pane_id",
+      "tab_id"
+    ],
+    "required": []
+  },
+  "layout.apply": {
+    "access": "action",
+    "fields": [
+      "focus",
+      "root",
+      "tab_id",
+      "tab_label",
+      "workspace_id"
+    ],
+    "required": [
+      "root"
+    ]
+  },
+  "layout.set_split_ratio": {
+    "access": "action",
+    "fields": [
+      "pane_id",
+      "path",
+      "ratio",
+      "tab_id"
+    ],
+    "required": [
+      "path",
+      "ratio"
+    ]
+  },
+  "pane.neighbor": {
+    "access": "query",
+    "fields": [
+      "direction",
+      "pane_id"
+    ],
+    "required": [
+      "direction"
+    ]
+  },
+  "pane.edges": {
+    "access": "query",
+    "fields": [
+      "pane_id"
+    ],
+    "required": []
+  },
+  "pane.focus_direction": {
+    "access": "action",
+    "fields": [
+      "direction",
+      "pane_id"
+    ],
+    "required": [
+      "direction"
+    ]
+  },
+  "pane.resize": {
+    "access": "action",
+    "fields": [
+      "amount",
+      "direction",
+      "pane_id"
+    ],
+    "required": [
+      "direction"
+    ]
+  },
+  "pane.scroll": {
+    "access": "action",
+    "fields": [
+      "offset_from_bottom",
+      "pane_id"
+    ],
+    "required": [
+      "pane_id",
+      "offset_from_bottom"
+    ]
+  },
+  "pane.clear": {
+    "access": "action",
+    "fields": [
+      "pane_id"
+    ],
+    "required": [
+      "pane_id"
+    ]
+  },
+  "pane.edit_scrollback": {
+    "access": "action",
+    "fields": [
+      "pane_id"
+    ],
+    "required": [
+      "pane_id"
+    ]
+  },
+  "pane.selection.read": {
+    "access": "query",
+    "fields": [
+      "anchor",
+      "content_revision",
+      "cursor",
+      "pane_id"
+    ],
+    "required": [
+      "pane_id",
+      "anchor",
+      "cursor"
+    ]
+  },
+  "pane.copy_motion": {
+    "access": "query",
+    "fields": [
+      "content_revision",
+      "cursor",
+      "motion",
+      "pane_id"
+    ],
+    "required": [
+      "pane_id",
+      "cursor",
+      "motion"
+    ]
+  },
+  "pane.copy_search": {
+    "access": "query",
+    "fields": [
+      "content_revision",
+      "cursor",
+      "direction",
+      "pane_id",
+      "previous",
+      "query"
+    ],
+    "required": [
+      "pane_id",
+      "query",
+      "direction",
+      "cursor",
+      "content_revision"
+    ]
+  },
+  "pane.list": {
+    "access": "query",
+    "fields": [
+      "workspace_id"
+    ],
+    "required": []
+  },
+  "pane.current": {
+    "access": "query",
+    "fields": [
+      "caller_pane_id"
+    ],
+    "required": [],
+    "notes": "Requires explicit caller_pane_id; no UI-focus fallback."
+  },
+  "pane.get": {
+    "access": "query",
+    "fields": [
+      "pane_id"
+    ],
+    "required": [
+      "pane_id"
+    ]
+  },
+  "pane.focus": {
+    "access": "action",
+    "fields": [
+      "pane_id"
+    ],
+    "required": [
+      "pane_id"
+    ]
+  },
+  "pane.input.set": {
+    "access": "action",
+    "fields": [
+      "pane_id",
+      "right_click"
+    ],
+    "required": [
+      "pane_id",
+      "right_click"
+    ]
+  },
+  "pane.link.activate": {
+    "access": "action",
+    "fields": [
+      "col",
+      "content_revision",
+      "offset_from_bottom",
+      "pane_id",
+      "viewport_row"
+    ],
+    "required": [
+      "pane_id",
+      "viewport_row",
+      "col"
+    ]
+  },
+  "pane.link.resolve": {
+    "access": "query",
+    "fields": [
+      "col",
+      "content_revision",
+      "offset_from_bottom",
+      "pane_id",
+      "viewport_row"
+    ],
+    "required": [
+      "pane_id",
+      "viewport_row",
+      "col"
+    ]
+  },
+  "pane.rename": {
+    "access": "action",
+    "fields": [
+      "label",
+      "pane_id"
+    ],
+    "required": [
+      "pane_id"
+    ]
+  },
+  "pane.send_text": {
+    "access": "action",
+    "fields": [
+      "pane_id",
+      "text"
+    ],
+    "required": [
+      "pane_id",
+      "text"
+    ]
+  },
+  "pane.send_keys": {
+    "access": "action",
+    "fields": [
+      "keys",
+      "pane_id"
+    ],
+    "required": [
+      "pane_id",
+      "keys"
+    ]
+  },
+  "pane.send_input": {
+    "access": "action",
+    "fields": [
+      "keys",
+      "pane_id",
+      "text"
+    ],
+    "required": [
+      "pane_id"
+    ]
+  },
+  "pane.read": {
+    "access": "query",
+    "fields": [
+      "format",
+      "lines",
+      "pane_id",
+      "source",
+      "strip_ansi"
+    ],
+    "required": [
+      "pane_id",
+      "source"
+    ]
+  },
+  "pane.report_agent": {
+    "access": "action",
+    "fields": [
+      "agent",
+      "agent_session_id",
+      "agent_session_path",
+      "message",
+      "pane_id",
+      "resume_argv",
+      "seq",
+      "source",
+      "state"
+    ],
+    "required": [
+      "pane_id",
+      "source",
+      "agent",
+      "state"
+    ],
+    "notes": "Publishes source-reported lifecycle state; use only actual evidence. It can alter detection, waits and notification authority; not independent task-success evidence."
+  },
+  "pane.report_agent_session": {
+    "access": "action",
+    "fields": [
+      "agent",
+      "agent_session_id",
+      "agent_session_path",
+      "pane_id",
+      "resume_argv",
+      "seq",
+      "session_start_source",
+      "source"
+    ],
+    "required": [
+      "pane_id",
+      "source",
+      "agent"
+    ],
+    "notes": "Publishes an actual source-reported session identity/resume command; do not invent or infer session IDs from unrelated backends."
+  },
+  "pane.report_metadata": {
+    "access": "action",
+    "fields": [
+      "agent",
+      "applies_to_source",
+      "clear_display_agent",
+      "clear_state_labels",
+      "clear_title",
+      "display_agent",
+      "pane_id",
+      "seq",
+      "source",
+      "state_labels",
+      "title",
+      "tokens",
+      "ttl_ms"
+    ],
+    "required": [
+      "pane_id",
+      "source"
+    ],
+    "notes": "Source-scoped display/tokens, optional seq and ttl_ms. Metadata is presentation, not independent ownership or task evidence."
+  },
+  "pane.clear_agent_authority": {
+    "access": "action",
+    "fields": [
+      "pane_id",
+      "seq",
+      "source"
+    ],
+    "required": [
+      "pane_id"
+    ],
+    "notes": "Clears native lifecycle authority; use for an authorized repair, not to manufacture a state transition."
+  },
+  "pane.release_agent": {
+    "access": "action",
+    "fields": [
+      "agent",
+      "pane_id",
+      "seq",
+      "source"
+    ],
+    "required": [
+      "pane_id",
+      "source",
+      "agent"
+    ],
+    "notes": "Releases native agent authority; does not independently prove task success or that the process exited."
+  },
+  "pane.close": {
+    "access": "action",
+    "fields": [
+      "pane_id"
+    ],
+    "required": [
+      "pane_id"
+    ]
+  },
+  "popup.close": {
+    "access": "action",
+    "fields": [],
+    "required": []
+  },
+  "events.subscribe": {
+    "access": "events",
+    "fields": [
+      "subscriptions"
+    ],
+    "required": [
+      "subscriptions"
+    ],
+    "notes": "Available through collect_native_events, a finite sample on its own subscription socket; not herdr_query/action or a durable dot event watch."
+  },
+  "events.wait": {
+    "access": "query",
+    "fields": [
+      "match_event",
+      "timeout_ms"
+    ],
+    "required": [
+      "match_event"
+    ],
+    "notes": "Herdr0.9.3 implements only match_event.event=pane_agent_status_changed. Timeout1\u201330000ms, default10000; explicit match_event.pane_id."
+  },
+  "pane.wait_for_output": {
+    "access": "query",
+    "fields": [
+      "lines",
+      "match",
+      "pane_id",
+      "source",
+      "strip_ansi",
+      "timeout_ms"
+    ],
+    "required": [
+      "pane_id",
+      "source",
+      "match"
+    ]
+  },
+  "integration.list": {
+    "access": "query",
+    "fields": [],
+    "required": []
+  },
+  "integration.install": {
+    "access": "action",
+    "fields": [
+      "target"
+    ],
+    "required": [
+      "target"
+    ],
+    "notes": "Edits the native integration configuration for the selected agent kind; it does not start that agent."
+  },
+  "integration.uninstall": {
+    "access": "action",
+    "fields": [
+      "target"
+    ],
+    "required": [
+      "target"
+    ],
+    "notes": "Removes native integration configuration for the selected kind."
+  },
+  "plugin.link": {
+    "access": "action",
+    "fields": [
+      "enabled",
+      "path",
+      "source"
+    ],
+    "required": [
+      "path"
+    ],
+    "notes": "Requires an absolute source-host plugin directory path. Herdr validates its manifest; no URL download/install wrapper."
+  },
+  "plugin.list": {
+    "access": "query",
+    "fields": [
+      "plugin_id"
+    ],
+    "required": []
+  },
+  "plugin.unlink": {
+    "access": "action",
+    "fields": [
+      "plugin_id"
+    ],
+    "required": [
+      "plugin_id"
+    ]
+  },
+  "plugin.enable": {
+    "access": "action",
+    "fields": [
+      "plugin_id"
+    ],
+    "required": [
+      "plugin_id"
+    ]
+  },
+  "plugin.disable": {
+    "access": "action",
+    "fields": [
+      "plugin_id"
+    ],
+    "required": [
+      "plugin_id"
+    ]
+  },
+  "plugin.action.list": {
+    "access": "query",
+    "fields": [
+      "plugin_id"
+    ],
+    "required": []
+  },
+  "plugin.action.invoke": {
+    "access": "action",
+    "fields": [
+      "action_id",
+      "context",
+      "plugin_id"
+    ],
+    "required": [
+      "action_id"
+    ],
+    "notes": "Requires explicit context target (focused_pane_id, tab_id or workspace_id). Herdr validates the installed/enabled action."
+  },
+  "plugin.log.list": {
+    "access": "query",
+    "fields": [
+      "limit",
+      "plugin_id"
+    ],
+    "required": []
+  },
+  "plugin.pane.open": {
+    "access": "action",
+    "fields": [
+      "cwd",
+      "direction",
+      "entrypoint",
+      "env",
+      "focus",
+      "height",
+      "placement",
+      "plugin_id",
+      "target_pane_id",
+      "width",
+      "workspace_id"
+    ],
+    "required": [
+      "plugin_id",
+      "entrypoint"
+    ],
+    "notes": "Requires absolute cwd and explicit target_pane_id or workspace_id. Popup/overlay placement has native UI-specific behavior."
+  },
+  "plugin.pane.focus": {
+    "access": "action",
+    "fields": [
+      "pane_id"
+    ],
+    "required": [
+      "pane_id"
+    ]
+  },
+  "plugin.pane.close": {
+    "access": "action",
+    "fields": [
+      "pane_id"
+    ],
+    "required": [
+      "pane_id"
+    ]
+  }
+}

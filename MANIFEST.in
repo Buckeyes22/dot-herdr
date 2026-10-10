@@ -1,0 +1,17 @@
+include requirements.lock CONTRIBUTING.md SECURITY.md CHANGELOG.md
+recursive-include docs *.md *.json
+recursive-include examples *.json
+recursive-include tests *.py
+recursive-include scripts *.py
+recursive-include src/dot_herdr/skills *.md
+include src/dot_herdr/plugin/LICENSE
+include src/dot_herdr/methods.json
+include src/dot_herdr/parameter-schemas.json
+include THIRD-PARTY-NOTICES.md
+recursive-include src/dot_herdr/licenses *.txt
+prune dist
+
+# Explicit exclusion even when a local checkout contains private records.
+prune private-records
+prune private
+

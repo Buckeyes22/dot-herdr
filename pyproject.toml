@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools==80.9.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dot-herdr"
+version = "0.4.0"
+description = "Bidirectional Herdr control and native MCP Events for dots"
+readme = "README.md"
+license = "MIT AND Apache-2.0"
+license-files = ["LICENSE", "THIRD-PARTY-NOTICES.md", "src/dot_herdr/licenses/*.txt"]
+requires-python = ">=3.11,<3.15"
+dependencies = ["mcp==2.3.0", "PyJWT[crypto]==2.15.1", "pydantic==2.13.5", "uvicorn==0.54.0"]
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+]
+
+[project.urls]
+Homepage = "https://github.com/Buckeyes22/dot-herdr"
+Issues = "https://github.com/Buckeyes22/dot-herdr/issues"
+Changelog = "https://github.com/Buckeyes22/dot-herdr/blob/main/CHANGELOG.md"
+
+[project.optional-dependencies]
+test = ["httpx2==2.13.1", "jsonschema==4.26.0"]
+
+[project.scripts]
+dot-herdr = "dot_herdr.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+namespaces = false
+
+[tool.setuptools.package-data]
+dot_herdr = ["skills/*/SKILL.md", "skills/*/references/*.md", "plugin/LICENSE", "methods.json", "parameter-schemas.json", "licenses/*.txt"]
+
+[tool.setuptools.data-files]
+"share/dot-herdr" = ["README.md", "requirements.lock", "CONTRIBUTING.md", "SECURITY.md", "CHANGELOG.md", "THIRD-PARTY-NOTICES.md"]
+"share/dot-herdr/docs" = ["docs/api.md", "docs/architecture.md", "docs/authentication.md", "docs/chatgpt.md", "docs/configuration.md", "docs/control.md", "docs/dependencies.md", "docs/deployment.md", "docs/desktop-and-tunnel.md", "docs/getting-started.md", "docs/guidance.md", "docs/native-coverage.md", "docs/operations.md", "docs/protocol-compliance.md", "docs/reachability.md", "docs/support.md", "docs/troubleshooting.md", "docs/implemented-schemas.json"]
+"share/dot-herdr/examples" = ["examples/*.json"]

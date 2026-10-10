@@ -1,0 +1,20 @@
+{
+  "store": "/path/to/private-state/connector.sqlite",
+  "socket": "/path/to/herdr.sock",
+  "issuer": "https://auth.example.invalid",
+  "resource": "https://connector.example.invalid/mcp",
+  "public_key": "/path/to/oauth-rsa-public-key.pem",
+  "subjects": [
+    {
+      "key": "parent_demo",
+      "user_subject": "replace-with-approved-issuer-subject",
+      "owner": "owner_demo",
+      "pane": "replace-with-exact-pane-id",
+      "terminal": "replace-with-exact-terminal-id",
+      "native": null,
+      "content": false,
+      "control": false
+    }
+  ],
+  "session_users": []
+}
